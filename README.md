@@ -1,5 +1,5 @@
-# Big-Type
-### sipmle, minimal theme for Tumblr
+# Orbit
+#### sipmle, minimal theme for Tumblr
 
 
 ## Demo
