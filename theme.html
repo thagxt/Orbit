@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>{Title}{block:SearchPage} - {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{MetaDescription}">
+
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+	<style type="text/css">
+    /* Reset */
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video { border:0; font-size:100%; font:inherit; vertical-align:baseline; margin:0; padding:0; }
+    ol, ul { list-style:none; }
+    blockquote,q { quotes:none; }
+    blockquote:before,blockquote:after,q:before,q:after { content:none; }
+    table { border-collapse:collapse; border-spacing:0; }
+    
+    /* Styles */
+	body {
+		background-color: #F4F4F4;
+		margin: 0;
+		color: black;
+		font-size: 11px;
+		font-family: 'Inconsolata';
+		text-align: center;
+		padding: 0 80px 30px;
+	}
+
+	h1 { margin: 0; font-size: 2em; font-weight: normal; font-style: normal; }
+
+	a { color: #999; text-decoration: none; }
+	a:hover { color: #000; }
+
+	header { padding: 100px 0 100px; }
+
+	header .loogo { margin: 30px auto; font-size: 3em; width: 40px; color: #000; text-align: center; }
+
+	header .name {
+	    position: fixed;
+	   	top: 45vh;
+	    left: 20px;
+	    margin-top: 98px;
+	    text-align: right;
+	    transform: rotate(-90deg);
+	    transform-origin: left top 0;
+	    width: 100px;
+	    z-index: 1000;
+	    font-size: 1.5em;
+	   	cursor: pointer;
+	}
+
+	header .showtwo { display: none; }
+	header .hoverme:hover .showtwo { display: block; text-align: center; text-transform: lowercase; cursor: pointer; }
+	header .hoverme:hover .showone { display: none; }
+	header .showclose { display: none; font-size: 1em; color: #999;  }
+
+	header .menu { margin: 0 auto; text-align: center; text-transform: lowercase; visibility: hidden; }
+	.active { visibility: visible!important; }
+	header .menu li { display: inline-block; }
+	header .menu ul { display: inline-block; font-size: 1.2em; font-weight: lighter; }
+	header .menu:last-child ul { font-size: 1.6em; }
+	header .menu ul a { margin-right: 10px; }
+
+	article { margin: 200px auto; position: relative; }
+	article:first-child { margin-top: 0; }
+	article:last-child { margin-bottom: 0; }
+
+	.Viewfullpost { padding-top: 10px; font-size: 1em; }
+
+	.post-text p { font-size: 1.2em; line-height: 1.3; text-align: left; }
+
+	.post-quote h1 q:before { content: "“ "; font-family: "Times New Roman",Baskerville,Times,serif; }
+	.post-quote h1 q:after { content: " ”"; font-family: "Times New Roman",Baskerville,Times,serif; }
+	.post-quote p { padding-top: 5px; }
+
+	.notes { font-size: 6em; position: absolute; right: 25px; top: -30px; }
+
+	.hideme { opacity: 0; }
+	.hideme:first-child { opacity: 1; }
+
+	#main { width: 400px; margin: 0 auto 100px; }
+	#main img { max-width: 400px; }
+
+	#big-main { width: 100%; margin: 0 auto 100px }
+	#big-main img { max-width: 400px; transition: all .2s ease-in-out; }
+	#big-main img:hover { transform: scale(1.7); }
+
+	.theme {
+	    bottom: 0;
+	    left: 25px;
+	    margin-bottom: -18px;
+	    position: fixed;
+	    transform: rotate(-90deg);
+	    transform-origin: left top 0;
+	    width: 200px;
+	    z-index: 1000;
+	}
+
+	.showtwo { display: none; }
+	.hoverme:hover .showtwo { display: block; }
+	.hoverme:hover .showone { display: none; }
+
+	#gotop { position: fixed; left: 0; right: 0; bottom: 20px; font-size: 3em }
+	#gotop a { color: #181818; }
+
+	footer { font-size: 3em; padding: 0px 0 100px; }
+
+	/* User CSS */
+	{CustomCSS}
+	</style>
+
+	<meta name="if:Infinity Scroll" content="0">
+
+    <meta name="text:Link 1 Name" content="">
+    <meta name="text:Link 1 URL" content="">
+    <meta name="text:Link 2 Name" content="">
+    <meta name="text:Link 2 URL" content="">
+    <meta name="text:Link 3 Name" content="">
+    <meta name="text:Link 3 URL" content="">
+
+	<meta name="text:Instagram URL" content="">
+    <meta name="text:Twitter URL" content="">
+    <meta name="text:Pinterest URL" content="">
+    <meta name="text:Facebook URL" content="">
+    <meta name="text:Flickr URL" content="">
+    <meta name="text:Vimeo URL" content="">
+    <meta name="text:SoundCloud URL" content="">
+
+    <meta name="text:Tag page 1" content="">
+    <meta name="text:Tag page 2" content="">
+    <meta name="text:Tag page 3" content="">
+
+</head>
+<body>
+
+<header>
+
+	<div class="name"><a href="{BlogURL}">{Title}</a></div>
+
+	<div class="menu">
+		<ul>
+			<li><a href="{BlogURL}">Home</a></li>
+			{block:IfLink1URL}<li><a href="{text:Link 1 URL}">{text:Link 1 Name}</a></li>{/block:IfLink1URL}
+			{block:IfLink2URL}<li><a href="{text:Link 2 URL}">{text:Link 2 Name}</a></li>{/block:IfLink2URL}
+			{block:IfLink3URL}<li><a href="{text:Link 3 URL}">{text:Link 3 Name}</a></li>{/block:IfLink3URL}
+			{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+			{block:IfTagpage1}<li><a href="/tagged/{text:Tag page 1}">{text:Tag page 1}</a></li>{/block:IfTagpage1}
+			{block:IfTagpage2}<li><a href="/tagged/{text:Tag page 2}">{text:Tag page 2}</a></li>{/block:IfTagpage2}
+			{block:IfTagpage3}<li><a href="/tagged/{text:Tag page 3}">{text:Tag page 3}</a></li>{/block:IfTagpage3}
+			{block:SubmissionsEnabled}<li><a href="/submit">Submit</a></li>{/block:SubmissionsEnabled}
+			{block:AskEnabled}<li><a href="/ask">Ask</a></li>{/block:AskEnabled}
+			<li><a href="/archive">Archive</a></li>
+		</ul>
+	</div>
+
+	<div class="loogo">
+		<span class="hoverme" title="open menu">
+			<div class="showone"><i class="fa fa-circle fa-fw"></i></div>
+			<div class="showtwo"><i class="fa fa-bars fa-fw"></i></div>
+		</span>
+
+		<div class="showclose"><i class="fa fa-leaf fa-fw"></i></div>
+	</div>
+
+	<div class="menu">
+		<ul>
+			{block:IfInstagramURL}<li><a href="{text:Instagram URL}" target="_blank"><i class="fa fa-instagram"></i></a></li>{/block:IfInstagramURL}
+			{block:IfTwitterURL}<li><a href="{text:Twitter URL}" target="_blank"><i class="fa fa-twitter"></i></a></li>{/block:IfTwitterURL}
+			{block:IfPinterestURL}<li><a href="{text:Pinterest URL}" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>{/block:IfPinterestURL}
+			{block:IfFacebookURL}<li><a href="{text:Facebook URL}" target="_blank"><i class="fa fa-facebook"></i></a></li>{/block:IfFacebookURL}
+			{block:IfFlickrURL}<li><a href="{text:Flickr URL}" target="_blank"><i class="fa fa-flickr"></i></a></li>{/block:IfFlickrURL}
+			{block:IfVimeoURL}<li><a href="{text:Vimeo URL}" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>{/block:IfVimeoURL}
+			{block:IfSoundCloudURL}<li><a href="{text:SoundCloud URL}" target="_blank"><i class="fa fa-soundcloud"></i></a></li>{/block:IfSoundCloudURL}
+		</ul>
+	</div>
+</header>
+
+{block:IndexPage}<section id="main">{/block:IndexPage}
+{block:PermalinkPage}<section id="big-main">{/block:PermalinkPage}
+
+{block:Posts}
+<!-- Home Page -->
+    {block:IndexPage}
+
+{block:Photo}
+	<article class="hideme">
+		<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+		{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+	</article>
+{/block:Photo}
+
+
+
+{block:Photoset}
+	<article class="hideme">
+    {block:Photos}<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}" /></a>{/block:Photos}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+	</article>
+{/block:Photoset}
+
+
+
+{block:Quote}
+	<article class="hideme post-quote">
+		<h1><q>{Quote}</q></h1>
+		<p><cite>{block:Source} &#8212; {Source} {/block:Source}</cite></p>
+		<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
+	</article>
+{/block:Quote}
+
+
+
+{block:Link} 
+	<article class="hideme">
+		<h1><a href="{URL}" target="_blank"><i class="fa fa-external-link fa-stack"></i>{Name}</a></h1>
+	</article>
+{/block:Link}
+
+
+
+{block:Audio}
+	<article class="hideme">
+	{block:AudioEmbed} {AudioEmbed-400} {/block:AudioEmbed}
+	{block:AudioPlayer} {AudioPlayer} {/block:AudioPlayer}
+	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
+	</article>
+{/block:Audio}
+
+
+
+{block:Video}
+	<article class="hideme">
+	{VideoEmbed-400}
+	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
+	</article>
+{/block:Video}
+
+
+
+{block:Answer} 
+	<article class="hideme">
+	<h1>{Question}</h1>
+	<p>{Answer}</p> {Asker}
+	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
+	</article>
+{/block:Answer}
+
+
+
+{block:Text} 
+	<article class="hideme post-text">
+		<h1>{Title}</h1>
+		<p style="text-align: left;">{Body}</p>
+		<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
+	</article>
+{/block:Text}
+
+	{/block:IndexPage}
+
+<!-- Single Page -->
+	{block:PermalinkPage}
+
+{block:Photo}
+	<article id="photo">
+		{block:NoteCount}
+			<div class="notes">
+				<span class="hoverme">
+					<div class="showone"><span class="numbers">{NoteCount}</span></div>
+					<div class="showtwo">notes</div>
+				</span>
+			</div>
+		{/block:NoteCount}
+
+		<a href="{LinkURL}" target="_blank"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/></a>
+		{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+	</article>
+{/block:Photo}
+
+
+{block:Photoset}
+	<article>
+		{block:NoteCount}
+			<div class="notes">
+				<span class="hoverme">
+					<div class="showone"><span class="numbers">{NoteCount}</span></div>
+					<div class="showtwo">notes</div>
+				</span>
+			</div>
+		{/block:NoteCount}
+
+    {Photoset-700}
+    {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+	</article>
+{/block:Photoset}
+
+
+{block:Quote}
+	<article class="post-quote">
+		<h1><q>{Quote}</q></h1>
+		<p><cite>{block:Source} &#8212; {Source} {/block:Source}</cite></p>
+	</article>
+{/block:Quote}
+
+
+{block:Link} 
+	<article>
+		<h1><a href="{URL}" target="_blank"><i class="fa fa-external-link fa-stack"></i>{Name}</a></h1>
+	</article>
+{/block:Link}
+
+
+{block:Video}
+	<article>
+	{VideoEmbed-700}
+	</article>
+{/block:Video}
+
+
+{block:Answer}
+	<article>
+	<h1>{Question}</h1> <div>&#8212; asked by {Asker}</div>
+	<p>{Answer}</p>
+	</article>
+{/block:Answer}
+
+{block:Text} 
+	<article class="post-text" style="max-width: 700px;">
+		<h1>{Title}</h1>
+		{Body}
+	</article>
+{/block:Text}
+
+
+	{/block:PermalinkPage}
+
+{/block:Posts}
+
+
+{block:IfNotInfinityScroll}
+    {block:Pagination}
+        <div id="paginator">
+            {block:PreviousPage}<a href="{PreviousPage}">&#8592;</a>{/block:PreviousPage} {CurrentPage} &#8212; {TotalPages} {block:NextPage}<a href="{NextPage}" id="futureposts">&#8594;</a>{/block:NextPage}
+        </div>
+    {/block:Pagination}
+{/block:IfNotInfinityScroll}
+
+{block:IfInfinityScroll}
+{block:Pagination}{block:NextPage}<div id="nextPage"><a href="{NextPage}">Next</a></div>{/block:NextPage}{/block:Pagination}
+{/block:IfInfinityScroll}
+</section>
+
+<div class="theme">
+	<span class="hoverme">
+		<div class="showone">orbit</div>
+		<div class="showtwo"><a href="#">get the theme</a></div>
+	</span>
+</div>
+
+<footer>
+	<span class="hoverme">
+		<div class="showone"><i class="fa fa-circle fa-fw"></i></div>
+		<div class="showtwo"><a href="{BlogURL}">{Title}</a></div>
+	</span>
+</footer>
+
+<div id="gotop"><a href="#"><i class="fa fa-long-arrow-up"></i></a></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	// Scroll FadeIn
+    $(window).on('scroll', function() {
+        $('.hideme').each( function(i){
+
+            //var bottom_of_object = $(this).offset().top + $(this).outerHeight() - 300;
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            if( bottom_of_window > bottom_of_object ){
+                $(this).animate({'opacity':'1'},700);
+            }
+
+        });
+    });
+
+    // scroll top
+    $('#gotop').click(function(e){
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
+    });
+
+    // menu
+    $(".loogo").on( "click", function() {
+	  $(".hoverme").hide();
+	  $(".showclose").show();
+	  $(".menu").addClass('active');
+	});
+
+    $("header").on( "mouseleave", function() {
+	  $(".hoverme").show();
+	  $(".showclose").hide();
+	  $(".menu").removeClass('active');
+	});
+
+});
+</script>
+
+{block:IndexPage}
+{block:IfInfinityScroll}
+<script src="//static.tumblr.com/qkikqqh/kqWn92hej/jquery.infinitescroll.min.js"></script>
+
+<script>
+  $(function(){
+    
+    var $container = $('#main');
+    
+    $container.infinitescroll({
+      navSelector  : '#nextPage',
+      nextSelector : '#nextPage a',
+      itemSelector : 'article',
+      bufferPx: 10,
+      loading: {
+          finishedMsg: "I think we've hit the end, Jim.",
+          img: null,
+          msgText: 'Loading...'
+
+        }
+      },
+
+      function( newElements ) {
+        var $newElems = $( newElements ).css({ opacity: 0 });
+
+        $newElems.imagesLoaded(function(){
+
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true ); 
+        });
+      }
+    );
+    
+  });
+</script>
+{/block:IfInfinityScroll}
+
+{/block:IndexPage}
+
+<!-- 
+    Theme: Orbit Theme
+    URI: https://github.com/thagxt/Orbit
+
+    Dev: gxt/JVH 
+    URI: https://thaGXT.biz
+
+    For: ShockBlast
+    URI: https://www.ShockBlast.net
+
+    Theme Updates: https://github.com/thagxt/Orbit
+
+-->
+
+</body>
+</html>
