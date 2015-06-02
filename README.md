@@ -10,8 +10,8 @@
 2. Go to Tumblr > `Paste` + `Save`
 3. `Enjoy`
 
-#### Support / Bugs / Feature requests etc.
-feel free to open an issue if you have suggestions, reuqests found bugs etc.
+#### Support / Bugs / New Features / Requests
+feel free to open an issue if you have suggestions, requests, bugs etc.
 
 ### Screenshots
 ![image](https://i.imgur.com/MX80cHM.png)
