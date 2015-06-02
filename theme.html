@@ -194,7 +194,7 @@
     {block:IndexPage}
 
 {block:Photo}
-	<article >
+	<article>
 		<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
 		{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 	</article>
@@ -203,7 +203,7 @@
 
 
 {block:Photoset}
-	<article >
+	<article>
     {block:Photos}<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}" /></a>{/block:Photos}
     {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 	</article>
@@ -222,7 +222,7 @@
 
 
 {block:Link} 
-	<article >
+	<article>
 		<h1><a href="{URL}" target="_blank"><i class="fa fa-external-link fa-stack"></i>{Name}</a></h1>
 	</article>
 {/block:Link}
@@ -230,7 +230,7 @@
 
 
 {block:Audio}
-	<article >
+	<article>
 	{block:AudioEmbed} {AudioEmbed-400} {/block:AudioEmbed}
 	{block:AudioPlayer} {AudioPlayer} {/block:AudioPlayer}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
@@ -240,7 +240,7 @@
 
 
 {block:Video}
-	<article >
+	<article>
 	{VideoEmbed-400}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
 	</article>
@@ -249,7 +249,7 @@
 
 
 {block:Answer} 
-	<article >
+	<article>
 	<h1>{Question}</h1>
 	<p>{Answer}</p> {Asker}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
