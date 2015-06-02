@@ -87,6 +87,7 @@
 
 	.hideme { opacity: 0; }
 	.hideme:first-child { opacity: 1; }
+	.showme { opacity: 1; transition: all 1s ease-in-out; }
 
 	#main { width: 400px; margin: 0 auto 100px; }
 	#main img { max-width: 400px; }
@@ -193,7 +194,7 @@
     {block:IndexPage}
 
 {block:Photo}
-	<article class="hideme">
+	<article >
 		<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
 		{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 	</article>
@@ -202,7 +203,7 @@
 
 
 {block:Photoset}
-	<article class="hideme">
+	<article >
     {block:Photos}<a href="{Permalink}#photo"><img src="{PhotoURL-500}" alt="{PhotoAlt}" /></a>{/block:Photos}
     {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 	</article>
@@ -221,7 +222,7 @@
 
 
 {block:Link} 
-	<article class="hideme">
+	<article >
 		<h1><a href="{URL}" target="_blank"><i class="fa fa-external-link fa-stack"></i>{Name}</a></h1>
 	</article>
 {/block:Link}
@@ -229,7 +230,7 @@
 
 
 {block:Audio}
-	<article class="hideme">
+	<article >
 	{block:AudioEmbed} {AudioEmbed-400} {/block:AudioEmbed}
 	{block:AudioPlayer} {AudioPlayer} {/block:AudioPlayer}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
@@ -239,7 +240,7 @@
 
 
 {block:Video}
-	<article class="hideme">
+	<article >
 	{VideoEmbed-400}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
 	</article>
@@ -248,7 +249,7 @@
 
 
 {block:Answer} 
-	<article class="hideme">
+	<article >
 	<h1>{Question}</h1>
 	<p>{Answer}</p> {Asker}
 	<div class="viewfullpost"><a href="{Permalink}"><i class="fa fa-eye"></i> <i class="fa fa-long-arrow-right"></i></a></div>
@@ -376,24 +377,17 @@
 <div id="gotop"><a href="#"><i class="fa fa-long-arrow-up"></i></a></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://static.tumblr.com/qkikqqh/EiNnpbeet/jquery.viewportchecker.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
 
 	// Scroll FadeIn
-    $(window).on('scroll', function() {
-        $('.hideme').each( function(i){
-
-            //var bottom_of_object = $(this).offset().top + $(this).outerHeight() - 300;
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            
-            if( bottom_of_window > bottom_of_object ){
-                $(this).animate({'opacity':'1'},700);
-            }
-
-        });
-    });
+	$('article').addClass("hideme").viewportChecker({
+		classToRemove: 'hideme',
+	    classToAdd: 'showme',
+	    offset: 10
+	});  
 
     // scroll top
     $('#gotop').click(function(e){
@@ -470,7 +464,7 @@ $(document).ready(function() {
 
     Theme Updates: https://github.com/thagxt/Orbit
     
-    Version 1.0
+    Version 1.2
 -->
 
 </body>
