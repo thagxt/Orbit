@@ -14,7 +14,7 @@
 feel free to open an issue if you have suggestions, requests, bugs etc.
 
 ### Screenshots
-![image](https://i.imgur.com/MX80cHM.png)
+![image](https://i.imgur.com/CfkT67R.png)
 ![image](https://i.imgur.com/oQIM0Vt.png)
 ![image](https://i.imgur.com/qEHiJ88.png)
 ![image](https://i.imgur.com/9Y8nJ2H.png)
