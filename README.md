@@ -1,5 +1,5 @@
 # Orbit
-#### sipmle, minimal theme for Tumblr
+#### simple, minimal theme for Tumblr
 
 
 ## Demo
